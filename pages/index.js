@@ -31,6 +31,7 @@ export default function Home() {
       <Head>
         <title>With Linaria</title>
       </Head>
+      
       <Box className={anotherClass}>Zero runtime CSS in JS</Box>
     </>
   )
