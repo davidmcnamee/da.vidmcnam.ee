@@ -324,6 +324,21 @@
   resolved "https://registry.yarnpkg.com/@hapi/hoek/-/hoek-9.2.0.tgz#f3933a44e365864f4dad5db94158106d511e8131"
   integrity sha512-sqKVVVOe5ivCaXDWivIJYVSaEgdQK9ul7a4Kity5Iw7u9+wBAPbX1RMSnLLmp7O4Vzj0WOWwMAJsTL00xwaNug==
 
+"@iconify/icons-bi@^1.1.6":
+  version "1.1.6"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-bi/-/icons-bi-1.1.6.tgz#90a636476235a61dc44b5f754e0242c50dc946a7"
+  integrity sha512-CWk+Ar7Ake7ygEHcTa+Tc+WVFYhLoZJWcfXDddIG8B3bhXidi7XMVNhlak6X3ZynQS2jknLyCLx4fJlfboKAIQ==
+
+"@iconify/icons-logos@^1.1.10":
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/@iconify/icons-logos/-/icons-logos-1.1.10.tgz#4a6c5f6036ca6f515a78b5eaef6d57fc7ad4e9ad"
+  integrity sha512-bGs/c0kGUCWr29wuppFYSaHqDH3o6qV85/h5jJhmenDPgVF8xWkFbXcFW7lAa+nJy1rMk4K7kFeXDOdMG1b5Rw==
+
+"@iconify/react@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@iconify/react/-/react-3.0.1.tgz#ce2cb3f4a2b6aab5f7af082c833d869b6fb43182"
+  integrity sha512-yUskSSR80JzRSWcqNsBAG9AN802XzZgHsex8mTOkMLYcPQC3fk1XwK17ulnY5vf692OafhGCAMccR8TWKFaGdw==
+
 "@lhci/cli@^0.8.0":
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/@lhci/cli/-/cli-0.8.0.tgz#79acaa3ca8dac2ff0005f89c16ba799a0b293f9d"

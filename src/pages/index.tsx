@@ -1,29 +1,9 @@
 import Head from 'next/head'
 import { styled } from 'linaria/react'
-import { css } from 'linaria'
-
-const Box = styled.div`
-  margin-top: 40px;
-  margin-left: 40px;
-  height: 200px;
-  width: 200px;
-  background-color: tomato;
-  animation: spin 2s linear infinite;
-
-  @keyframes spin {
-    from {
-      transform: rotate(0deg);
-    }
-
-    to {
-      transform: rotate(360deg);
-    }
-  }
-`
-
-const anotherClass = css`
-  color: blue;
-`
+import { Icon } from '@iconify/react';
+import linkedinIcon from '@iconify/icons-logos/linkedin-icon';
+import githubIcon from '@iconify/icons-logos/github-icon';
+import filePdf from '@iconify/icons-bi/file-pdf';
 
 export default function Home() {
   return (
@@ -31,8 +11,19 @@ export default function Home() {
       <Head>
         <title>With Linaria</title>
       </Head>
-      
-      <Box className={anotherClass}>Zero runtime CSS in JS</Box>
+
+      <nav>
+        {/* leave blank space for name in top-left */}
+        <a href="https://www.linkedin.com/in/david-mcnamee/"><Icon icon={linkedinIcon}/></a>
+        <a href="https://github.com/davidmcnamee"><Icon icon={githubIcon}/></a>
+        <a href="/davidmcnamee-resume.pdf"><Icon icon={filePdf} /></a>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#blog">Blog</a>
+      </nav>
+      <main>
+
+      </main>
     </>
   )
 }

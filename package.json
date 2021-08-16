@@ -6,6 +6,9 @@
     "start": "next start"
   },
   "dependencies": {
+    "@iconify/icons-bi": "^1.1.6",
+    "@iconify/icons-logos": "^1.1.10",
+    "@iconify/react": "^3.0.1",
     "linaria": "^2.1.0",
     "next": "latest",
     "next-linaria": "^0.10.0",
