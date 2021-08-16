@@ -15,7 +15,12 @@ class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
-        <Head />
+        <Head>
+          <meta charSet="UTF-8"/>
+          <meta name="description" content="David McNamee's Portfolio"/>
+          <meta name="keywords" content="Software Engineer, Python, C++, Rust, Go, Java, JavaScript, Typescript, Intern"/>
+          <meta name="author" content="David McNamee"/>
+        </Head>
         <body>
           <Main />
           <NextScript />
