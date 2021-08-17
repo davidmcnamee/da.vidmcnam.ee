@@ -1,28 +1,37 @@
 import Head from 'next/head'
-import { styled } from 'linaria/react'
-import { Icon } from '@iconify/react';
-import linkedinIcon from '@iconify/icons-logos/linkedin-icon';
-import githubIcon from '@iconify/icons-logos/github-icon';
-import filePdf from '@iconify/icons-bi/file-pdf';
+import React from 'react'
+import { BlogContainer } from '../components/blog/container'
+import { Post } from '../components/blog/post'
+import { ProjectContainer } from '../components/project/container'
+import { Project } from '../components/project/project'
 
 export default function Home() {
   return (
     <>
       <Head>
-        <title>With Linaria</title>
+        <title>davidmcnamee</title>
       </Head>
-
-      <nav>
-        {/* leave blank space for name in top-left */}
-        <a href="https://www.linkedin.com/in/david-mcnamee/"><Icon icon={linkedinIcon}/></a>
-        <a href="https://github.com/davidmcnamee"><Icon icon={githubIcon}/></a>
-        <a href="/davidmcnamee-resume.pdf"><Icon icon={filePdf} /></a>
-        <a href="#about">About</a>
-        <a href="#projects">Projects</a>
-        <a href="#blog">Blog</a>
-      </nav>
       <main>
-
+        <section title="About">
+          <h1>David McNamee</h1>
+          <p>description and stuff and oaio jaifoaijf oaijfoi jaofijaofijaof joaijfoaij foiajfiamdoi amcoi aoij caoid joaij foaijfo iajfa</p>
+        </section>
+        <section title="Projects">
+          <ProjectContainer>
+            <Project />
+            <Project />
+            <Project />
+            <Project />
+          </ProjectContainer>
+        </section>
+        <section title="Blog">
+          <BlogContainer>
+            <Post />
+            <Post />
+            <Post />
+            <Post />
+          </BlogContainer>
+        </section>
       </main>
     </>
   )
