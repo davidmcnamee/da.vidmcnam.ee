@@ -1,17 +1,11 @@
-import { Icon } from '@iconify/react';
-import linkedinIcon from '@iconify/icons-logos/linkedin-icon';
-import githubIcon from '@iconify/icons-logos/github-icon';
-import filePdf from '@iconify/icons-bi/file-pdf';
 import { styled } from 'linaria/react'
-import { onDesktop } from '../../styles/constants';
-import { Dispatch, FC, MutableRefObject, SetStateAction, useRef, useState } from 'react';
-import menuIcon from '@iconify/icons-feather/menu';
+import { HEADER_HEIGHT_DESKTOP, HEADER_HEIGHT_MOBILE, onDesktop } from '../../styles/constants';
+import React, { Dispatch, FC, MutableRefObject, SetStateAction, useRef, useState } from 'react';
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { LinkedinIcon } from '../../icons/link-linkedin';
 import { ResumeIcon } from '../../icons/link-resume';
 import { GithubIcon } from '../../icons/link-github';
 import { MenuIcon } from '../../icons/hamburger-menu';
-
 
 type NavProps = {
   theme: 'light' | 'dark' | undefined;
@@ -22,40 +16,42 @@ export const Nav: FC<NavProps> = (props) => {
   const { theme, setTheme } = props;
   const [isVisible, setVisible] = useState(false);
   const linkContainerRef = useRef<HTMLDivElement>(null);
+
   return (
+    <>
     <Container>
       {/* leave blank space for name in top-left */}
-      {theme && <DarkModeSwitch size={30} checked={theme === 'dark'} onChange={b => setTheme(b ? 'dark' : 'light')}/>}
-      <HamburgerButton as={MenuIcon} onClick={() => setVisible(v => !v)} />
+      {theme && <StyledIcon as={DarkModeSwitch} size={30} checked={theme === 'dark'} onChange={b => setTheme(b ? 'dark' : 'light')}/>}
+      {/* TODO: fix onBlur */}
+      <HamburgerButton as={MenuIcon} onClick={() => setVisible(v => !v)} onBlur={() => setVisible(false)} />
       <LinkContainer ref={linkContainerRef} isVisible={isVisible} innerRef={linkContainerRef}>
         <IconContainer>
-          <StyledIcon href="https://www.linkedin.com/in/david-mcnamee/"><LinkedinIcon/></StyledIcon>
-          <StyledIcon href="https://github.com/davidmcnamee"><GithubIcon/></StyledIcon>
-          <StyledIcon href="/davidmcnamee-resume.pdf"><ResumeIcon/></StyledIcon>
+          <Link href="https://www.linkedin.com/in/david-mcnamee/"><StyledIcon as={LinkedinIcon}/></Link>
+          <Link href="https://github.com/davidmcnamee"><StyledIcon as={GithubIcon}/></Link>
+          <Link href="/davidmcnamee-resume.pdf"><StyledIcon as={ResumeIcon}/></Link>
         </IconContainer>
         <Link href="#about">About</Link>
         <Link href="#projects">Projects</Link>
         <Link href="#blog">Blog</Link>
       </LinkContainer>
     </Container>
+    <GhostContainer className="scroll-watch" />
+    </>
   )
 }
 
-const StyledIcon = styled.a`
-  text-decoration: none;
-  > svg {
-    font-size: 1.6em;
-    margin: 0 0.5em;
-    text-decoration: none;
-    color: var(--text-color);
-  }
+const StyledIcon = styled.svg<Partial<React.ComponentProps<typeof DarkModeSwitch>>>`
+  font-size: 1.6em;
+  margin: 0 0.5em;
+  color: var(--text-color);
 `;
 
 const HamburgerButton = styled(StyledIcon)`
+  cursor: pointer;
   ${onDesktop} {
     display: none;
   }
-`
+`;
 
 const Link = styled.a`
   text-decoration: none;
@@ -63,20 +59,46 @@ const Link = styled.a`
 `
 
 const Container = styled.nav`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: 2;
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  height: 3em;
-  box-shadow: 0px -4px 35px -6px rgb(0 0 0 / 28%);
+  height: ${HEADER_HEIGHT_MOBILE};
   padding: 0.5em 1em;
   ${onDesktop} {
-    height: 5.5em;
+    height: ${HEADER_HEIGHT_DESKTOP};
   }
 `
+
+const GhostContainer = styled.div`
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: ${HEADER_HEIGHT_MOBILE};
+  ${onDesktop} {
+    height: ${HEADER_HEIGHT_DESKTOP};
+  }
+  width: 100vw;
+  background-color: var(--background);
+  box-shadow: 0px -4px 35px -6px rgb(0 0 0 / 28%);
+  transition: all 0.3s ease-in-out;
+  opacity: 0;
+  transform: scaleY(2);
+  &[is-scrolled="true"] {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+`;
+
 type LinkContainerProps = {isVisible: boolean, innerRef: MutableRefObject<HTMLDivElement | null>};
 const LinkContainer = styled.div<LinkContainerProps>`
   position: fixed;
-  top: 2.5em;
+  top: ${HEADER_HEIGHT_MOBILE};
   left: 100vw;
   transition: all 0.3s ease;
   transform: translateX(calc(0px - ${(p: LinkContainerProps) => p.isVisible ? p.innerRef.current?.getBoundingClientRect().width ?? 0 : 0}px));

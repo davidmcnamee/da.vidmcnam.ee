@@ -6,6 +6,8 @@ import Document, {
   DocumentContext,
 } from "next/document";
 
+const HtmlWithAttributes = Html as any;
+
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const initialProps = await Document.getInitialProps(ctx);
@@ -14,11 +16,11 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="en">
+      <HtmlWithAttributes lang="en" replace-scrollbar="null">
         <Head>
           <link rel="preconnect" href="https://fonts.googleapis.com"/>
           <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-          <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet"/>
+          <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap" rel="stylesheet"/>
           <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet"/>
           <meta charSet="UTF-8"/>
           <meta name="description" content="David McNamee's Portfolio"/>
@@ -29,7 +31,7 @@ class MyDocument extends Document {
           <Main />
           <NextScript />
         </body>
-      </Html>
+      </HtmlWithAttributes>
     );
   }
 }

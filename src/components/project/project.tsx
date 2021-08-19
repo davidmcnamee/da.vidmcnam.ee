@@ -1,5 +1,10 @@
-export const Project = () => {
+import { FC } from "react";
+
+export const Project: FC = ({children}) => {
   return (
-    <h2>Project</h2>
+    <div>
+      Project
+      {children}
+    </div>
   );
 }
