@@ -1,12 +1,10 @@
 import { styled } from "linaria/lib/react";
-import Script from "next/script";
 import React, { useEffect, useState } from "react";
 import ReactDOM from 'react-dom';
-import { HEADER_HEIGHT_DESKTOP, HEADER_HEIGHT_MOBILE, onDesktop, SECTION_PADDING_VERTICAL } from "../../styles/constants";
+import { RECT_HEIGHT_MOBILE, RECT_HEIGHT_DESKTOP, HEADER_HEIGHT_DESKTOP, HEADER_HEIGHT_MOBILE, onDesktop, SECTION_PADDING_VERTICAL_MOBILE, SECTION_PADDING_VERTICAL_DESKTOP } from "../../styles/constants";
 
 const RECT_WIDTH = `min(90vh, 90vw)`;
-const RECT_HEIGHT = `20rem`;
-const RECT_SPLIT = 2/5;
+const RECT_SPLIT = 1/2;
 
 export const Hero = () => {
   const [isLoaded, setLoaded] = useState(false);
@@ -29,9 +27,9 @@ export const Hero = () => {
           I am a computer science and business major, with a passion for all
           sorts of tech. My (current) interests are distributed systems, user
           interfaces, and programming languages. Previously at{" "}
-          <a href="https://wish.com">Wish</a>,{" "}
-          <a href="https://lazertechnologies.com">Lazer</a>, and{" "}
-          <a href="https://snapcommerce.com">SnapCommerce</a>.
+          <b><a href="https://wish.com">Wish</a></b>,{" "}
+          <b><a href="https://lazertechnologies.com">Lazer</a></b>, and{" "}
+          <b><a href="https://snapcommerce.com">SnapCommerce</a></b>.
         </Blurb>
       </BioContainer>
     </>
@@ -50,7 +48,7 @@ const BioContainer = styled.div`
   margin: 3em 0;
 
   ${onDesktop} {
-    top: calc(${HEADER_HEIGHT_MOBILE} + ${SECTION_PADDING_VERTICAL} + ${RECT_HEIGHT} * ${RECT_SPLIT});
+    top: calc(${SECTION_PADDING_VERTICAL_DESKTOP} + ${RECT_HEIGHT_DESKTOP} * ${RECT_SPLIT});
     grid-template-columns: auto 1fr;
     position: absolute;
     left: 50vw;
@@ -71,6 +69,9 @@ const Blurb = styled.p`
     &[is-scrolled="true"] {
       transition: opacity 0.5s ease-in-out;
     }
+    a {
+      color: var(--link);
+    }
   }
 `;
 const Headshot = styled.img`
@@ -89,8 +90,11 @@ const Headshot = styled.img`
   }
 `;
 const BackgroundRect = styled.div`
-  height: ${RECT_HEIGHT};
+  height: ${RECT_HEIGHT_MOBILE};
   width: ${RECT_WIDTH};
+  ${onDesktop} {
+    height: ${RECT_HEIGHT_DESKTOP};
+  }
   border-radius: 5% 35% 5% 35%;
   background-color: var(--background-lighter-6);
   opacity: 0; transform: scaleX(0);
@@ -103,15 +107,17 @@ const BackgroundRect = styled.div`
   }
 `;
 const Name = styled.h1<{isLoaded: boolean}>`
-  --top: calc(${HEADER_HEIGHT_MOBILE} + ${SECTION_PADDING_VERTICAL} + ${RECT_HEIGHT} * 0.5);
+  --top: calc(${HEADER_HEIGHT_MOBILE} + ${SECTION_PADDING_VERTICAL_MOBILE} + ${RECT_HEIGHT_MOBILE} * 0.5);
   --left: 50vw;
   --scale: 0.5;
-  font-size: 2em;
   transform: translate(-50%,-50%);
+  pointer-events: none;
+  font-size: 2rem;
   ${onDesktop} {
-    --top: calc(${HEADER_HEIGHT_MOBILE} + ${SECTION_PADDING_VERTICAL} + ${RECT_HEIGHT} * ${RECT_SPLIT});
-    --scale: 0.4;
-    font-size: 4em;
+    --top: calc(${HEADER_HEIGHT_MOBILE} + ${SECTION_PADDING_VERTICAL_DESKTOP} + ${RECT_HEIGHT_DESKTOP} * ${RECT_SPLIT});
+    transform: translate(-50%,-100%);
+    --scale: 0.3;
+    font-size: 4rem;
   }
   z-index: 2;
   position: fixed;

@@ -31,7 +31,12 @@ export const globals = css`
     }
     h1, h2, h3, h4 {
       font-family: "Poppins", sans-serif;
+      margin-top: 0;
     }
+    p { margin-top: 0; }
+    h1 { font-size: 4rem; }
+    h2 { font-size: 3rem; }
+    h3 { font-size: 1.6rem; }
     a {
       color: var(--link);
       text-decoration: none;

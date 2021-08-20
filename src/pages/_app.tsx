@@ -1,9 +1,30 @@
 import { globals } from '../styles/global';
 import { AppProps } from 'next/app';
-import { useColorTheme } from '../styles/colors';
+import { darkTheme, lightTheme, useColorTheme } from '../styles/colors';
 import { Nav } from '../components/nav/nav';
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import Script from 'next/script';
+import { IParallax } from '@react-spring/parallax';
+
+const consoleMsg = `
+%cHey there 👋
+
+Good to have you on my website! You're here for source code, I presume? The code here is minified, but here's a link to the original: https://github.com/davidmcnamee/portfolio-site-v3.
+This site is built with %cNext.js%c (a React framework) and styled with %clinaria%c (a zero-runtime CSS-in-JS tool). I also make use of %cFeather icons%c, and %creact-spring%c (the animation library that manages the parallax scrolling effect).
+
+Hope that satisfies your appetite. Happy coding!
+`.trim();
+const consoleVars = [
+  "color: green",
+  `background: ${lightTheme['--gradient-1']}`,
+  `color: green`,
+  `background: ${lightTheme['--gradient-2']}`,
+  `color: green`,
+  `background: ${lightTheme['--gradient-3']}`,
+  `color: green`,
+  `background: ${lightTheme['--gradient-4']}`,
+  `color: green`,
+];
 
 globals; // needs to be imported on every page
 const App: React.FC<AppProps> = ({Component, pageProps}) => {
@@ -21,19 +42,11 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
       </Script>
       <Script strategy="afterInteractive">
         {`
-          document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-              anchor.addEventListener('click', function (e) {
-                  e.preventDefault();
-
-                  document.querySelector(this.getAttribute('href')).scrollIntoView({
-                      behavior: 'smooth'
-                  });
-              });
-          });
+          console.log(\`${consoleMsg}\`, "${consoleVars.join("\",\"")}");
         `}
       </Script>
-      <Nav theme={theme} setTheme={setTheme}/>
-      <Component {...pageProps} />
+      <Nav theme={theme} setTheme={setTheme} />
+      <Component {...pageProps} theme={theme}  />
     </>
   );
 }

@@ -1,6 +1,6 @@
 import { styled } from 'linaria/react'
 import { HEADER_HEIGHT_DESKTOP, HEADER_HEIGHT_MOBILE, onDesktop } from '../../styles/constants';
-import React, { Dispatch, FC, MutableRefObject, SetStateAction, useRef, useState } from 'react';
+import React, { Dispatch, FC, SetStateAction, useRef, useState } from 'react';
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { LinkedinIcon } from '../../icons/link-linkedin';
 import { ResumeIcon } from '../../icons/link-resume';
@@ -15,7 +15,9 @@ type NavProps = {
 export const Nav: FC<NavProps> = (props) => {
   const { theme, setTheme } = props;
   const [isVisible, setVisible] = useState(false);
-  const linkContainerRef = useRef<HTMLDivElement>(null);
+  const onLocalClick = () => {
+    window.dispatchEvent(new Event('popstate'));
+  }
 
   return (
     <>
@@ -24,15 +26,15 @@ export const Nav: FC<NavProps> = (props) => {
       {theme && <StyledIcon as={DarkModeSwitch} size={30} checked={theme === 'dark'} onChange={b => setTheme(b ? 'dark' : 'light')}/>}
       {/* TODO: fix onBlur */}
       <HamburgerButton as={MenuIcon} onClick={() => setVisible(v => !v)} onBlur={() => setVisible(false)} />
-      <LinkContainer ref={linkContainerRef} isVisible={isVisible} innerRef={linkContainerRef}>
+      <LinkContainer isVisible={isVisible}>
         <IconContainer>
           <Link href="https://www.linkedin.com/in/david-mcnamee/"><StyledIcon as={LinkedinIcon}/></Link>
           <Link href="https://github.com/davidmcnamee"><StyledIcon as={GithubIcon}/></Link>
           <Link href="/davidmcnamee-resume.pdf"><StyledIcon as={ResumeIcon}/></Link>
         </IconContainer>
-        <Link href="#about">About</Link>
-        <Link href="#projects">Projects</Link>
-        <Link href="#blog">Blog</Link>
+        <Link href="#about" onClick={onLocalClick}>About</Link>
+        <Link href="#projects" onClick={onLocalClick}>Projects</Link>
+        <Link href="#blog" onClick={onLocalClick}>Blog</Link>
       </LinkContainer>
     </Container>
     <GhostContainer className="scroll-watch" />
@@ -41,8 +43,11 @@ export const Nav: FC<NavProps> = (props) => {
 }
 
 const StyledIcon = styled.svg<Partial<React.ComponentProps<typeof DarkModeSwitch>>>`
-  font-size: 1.6em;
+  font-size: 1.6rem;
   margin: 0 0.5em;
+  ${onDesktop} {
+    margin: 0 0.5em;
+  }
   color: var(--text-color);
 `;
 
@@ -69,6 +74,10 @@ const Container = styled.nav`
   align-items: center;
   height: ${HEADER_HEIGHT_MOBILE};
   padding: 0.5em 1em;
+  pointer-events: none;
+  > * {
+    pointer-events: auto;
+  }
   ${onDesktop} {
     height: ${HEADER_HEIGHT_DESKTOP};
   }
@@ -76,6 +85,7 @@ const Container = styled.nav`
 
 const GhostContainer = styled.div`
   position: fixed;
+  pointer-events: none;
   z-index: 1;
   top: 0;
   left: 0;
@@ -95,28 +105,34 @@ const GhostContainer = styled.div`
   }
 `;
 
-type LinkContainerProps = {isVisible: boolean, innerRef: MutableRefObject<HTMLDivElement | null>};
+type LinkContainerProps = {isVisible: boolean};
 const LinkContainer = styled.div<LinkContainerProps>`
   position: fixed;
   top: ${HEADER_HEIGHT_MOBILE};
   left: 100vw;
   transition: all 0.3s ease;
-  transform: translateX(calc(0px - ${(p: LinkContainerProps) => p.isVisible ? p.innerRef.current?.getBoundingClientRect().width ?? 0 : 0}px));
+  transform: translateX(${p => p.isVisible ? "-100%" : 0});
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  padding: 0.8em;
   > * {
-    margin: 0.1em 0;
+    padding: 0.5em;
+    border-top-left-radius: 3em;
+    border-bottom-left-radius: 3em;
+    background-color: rgba(0,0,0,0.5);
   }
   ${onDesktop} {
+    background-color: none;
     position: unset;
     flex-direction: row;
     align-items: center;
     transform: none;
     padding: 0;
     > * {
-      margin: 0 0.5em;
+      padding: 0 0.5em;
+      border-top-left-radius: unset;
+      border-bottom-left-radius: unset;
+      background-color: unset;
     }
   }
 `
