@@ -70,6 +70,7 @@ export function useColorTheme() {
       mediaQuery.removeEventListener('change', handler);
     }
     mediaQuery.addEventListener('change', handler);
+    setTheme(mediaQuery.matches ? 'light' : 'dark');
   }, []);
   // if toggle is clicked, change the theme across JS, CSS, and local storage
   useEffect(() => {
