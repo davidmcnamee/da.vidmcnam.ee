@@ -16,10 +16,14 @@ type ProjectProps = {
 
 export const Project: FC<ProjectProps> = (props) => {
   const {children, title, url, backgroundImg, gradient, description} = props;
-  const [, forceUpdate] = useReducer(x => x + 1, 0);
+  const [numUpdates, forceUpdate] = useReducer(x => x + 1, 0);
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
-  useEffect(forceUpdate, []);
+  useEffect(() => {
+    window.addEventListener('resize', forceUpdate);
+    return () => window.removeEventListener('resize', forceUpdate);
+  }, []);
+  useEffect(() => numUpdates < 2 ? forceUpdate() : undefined, [numUpdates]);
 
   return (
     <a href={url}>
