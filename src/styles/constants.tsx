@@ -2,7 +2,7 @@
 export const onDesktopQuery = '(min-width: 768px)';
 export const onDesktop = `@media${onDesktopQuery}`;
 export const onFullDesktopQuery = '(min-width: 1200px)';
-export const onFullDesktop = `@media${onDesktopQuery}`;
+export const onFullDesktop = `@media${onFullDesktopQuery}`;
 
 export const HEADER_HEIGHT_DESKTOP = "4rem";
 export const HEADER_HEIGHT_MOBILE = "4rem";

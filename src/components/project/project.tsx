@@ -1,7 +1,7 @@
 import { styled } from "linaria/lib/react";
-import { useEffect } from "react";
-import { FC, RefObject, useReducer, useRef } from "react";
-import { darkTheme, lightTheme } from "../../styles/colors";
+import { useEffect, useState } from "react";
+import { FC, RefObject, useRef } from "react";
+import { darkTheme } from "../../styles/colors";
 import { onDesktop } from "../../styles/constants";
 
 const CONTAINER_PADDING = "1rem";
@@ -16,18 +16,22 @@ type ProjectProps = {
 
 export const Project: FC<ProjectProps> = (props) => {
   const {children, title, url, backgroundImg, gradient, description} = props;
-  const [numUpdates, forceUpdate] = useReducer(x => x + 1, 0);
   const containerRef = useRef<HTMLDivElement>(null);
   const titleRef = useRef<HTMLHeadingElement>(null);
+
+  // This ensures that css variables are kept up to date with containerRef size
+  // every time resize occurs, reset to zero.
+  const [numUpdates, setUpdates] = useState(0);
   useEffect(() => {
-    window.addEventListener('resize', forceUpdate);
-    return () => window.removeEventListener('resize', forceUpdate);
+    const onResize = () => setUpdates(0);
+    window.addEventListener('resize', onResize);
+    return () => window.removeEventListener('resize', onResize);
   }, []);
-  useEffect(() => numUpdates < 2 ? forceUpdate() : undefined, [numUpdates]);
+  useEffect(() => numUpdates < 2 ? setUpdates(x => x+1) : undefined, [numUpdates]);
 
   return (
     <a href={url}>
-      <Container ref={containerRef} innerRef={containerRef} titleRef={titleRef} backgroundImg={backgroundImg} gradient={gradient}>
+      <Container ref={containerRef} innerRef={containerRef} numUpdates={numUpdates} titleRef={titleRef} backgroundImg={backgroundImg} gradient={gradient}>
         <h3 ref={titleRef}>{title}</h3>
         <p>{description}</p>
         <GhostHeader>{title}</GhostHeader>
@@ -39,6 +43,7 @@ export const Project: FC<ProjectProps> = (props) => {
 type ContainerProps = Pick<ProjectProps, "backgroundImg" | "gradient"> & {
   titleRef: RefObject<HTMLHeadingElement>;
   innerRef: RefObject<HTMLDivElement>;
+  numUpdates: number;
 };
 
 const GhostHeader = styled.h3`
