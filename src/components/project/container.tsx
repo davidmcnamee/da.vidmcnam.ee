@@ -15,7 +15,7 @@ export const ProjectSection: FC = ({children}) => (
 
 const ProjectContainer = styled.div`
   display: grid;
-  gap: 1em;
+  gap: 5em 1em;
   width: 95%;
   ${onDesktop} {
     grid-template-columns: repeat(2, 1fr);

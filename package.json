@@ -11,6 +11,7 @@
     "@iconify/icons-logos": "^1.1.10",
     "@iconify/react": "^3.0.1",
     "@react-spring/parallax": "^9.2.4",
+    "beautiful-react-hooks": "^0.35.0",
     "framer-motion": "^4.1.17",
     "linaria": "^2.1.0",
     "lodash": "^4.17.21",

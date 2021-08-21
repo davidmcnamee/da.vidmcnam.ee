@@ -45,7 +45,7 @@ const BioContainer = styled.div`
   display: grid;
   align-items: center;
   justify-items: center;
-  margin: 3em 0;
+  margin: 3em 0 0;
 
   ${onDesktop} {
     top: calc(${SECTION_PADDING_VERTICAL_DESKTOP} + ${RECT_HEIGHT_DESKTOP} * ${RECT_SPLIT});
