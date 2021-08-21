@@ -23,7 +23,7 @@ export default function Home(props: HomeProps) {
   const parallaxLayers = [
     { id: "about", size: 0.93 },
     { id: "divider-1", size: 0.5 },
-    { id: "projects", size: isFullDesktop ? 2.5 : (isDesktop ? 3.5 : 4.9) },
+    { id: "projects", size: isFullDesktop ? 2.5 : (isDesktop ? 4.0 : 5.1) },
     { id: "blog", size: 0.5 },
   ];
   
@@ -169,7 +169,7 @@ export default function Home(props: HomeProps) {
                 for the first time."
               />
               <Project
-                title="Ingredient Simplifier (Coffee N' Code 2019)"
+                title="Ingredient Simplifier"
                 url="https://github.com/UWCoffeeNCode/Past-Projects/tree/master/F19/Projects/Ingredient-Simplifier"
                 backgroundImg="url(/coffeencode-background.png)"
                 gradient="var(--project-gradient-3)"
