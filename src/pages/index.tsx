@@ -23,7 +23,7 @@ export default function Home(props: HomeProps) {
   const parallaxLayers = [
     { id: "about", size: 0.93 },
     { id: "divider-1", size: 0.5 },
-    { id: "projects", size: isDesktop ? 2.3 : 3.7 },
+    { id: "projects", size: isFullDesktop ? 2.5 : (isDesktop ? 3.5 : 4.9) },
     { id: "blog", size: 0.5 },
   ];
   
