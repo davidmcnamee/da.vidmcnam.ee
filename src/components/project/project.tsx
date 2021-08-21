@@ -58,7 +58,7 @@ const Container = styled.div<ContainerProps>`
   border-radius: 0.5em;
   padding: ${CONTAINER_PADDING};
   cursor: pointer;
-  transition: all 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   * {
     color: ${darkTheme['--text-color']};
   }
@@ -77,8 +77,8 @@ const Container = styled.div<ContainerProps>`
   &:before {
     background-image: ${p => p.backgroundImg};
     z-index: -1;
-    transition: opacity 0.4s;
-    opacity: 0.5;
+    transition: opacity 0.4s ease-in-out;
+    opacity: 0.1;
     ${onDesktop} {
       opacity: 0.7;
     }
@@ -88,10 +88,14 @@ const Container = styled.div<ContainerProps>`
     z-index: -2;
   }
   &:hover {
-    box-shadow: 0px 0px 52px -10px rgb(0 0 0 / 75%);
+    ${onDesktop} {
+      box-shadow: 0px 0px 52px -10px rgb(0 0 0 / 75%);
+    }
   }
   &:hover:before {
-    opacity: 0.2;
+    ${onDesktop} {
+      opacity: 0.1;
+    }
   }
   text-decoration: none;
   & > h3 {

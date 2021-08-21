@@ -46,7 +46,7 @@ export const globals = css`
       padding: 0;
       margin: 0;
       background-color: var(--background);
-      transition: all 0.3s ease-in-out;
+      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
       color: var(--text-color);
     }
 

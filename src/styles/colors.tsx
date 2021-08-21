@@ -65,12 +65,12 @@ export function useColorTheme() {
     if(isColorTheme(localStorageTheme)) return setTheme(localStorageTheme);
     // otherwise, check browser settings
     const mediaQuery = window.matchMedia('(prefers-color-scheme: light)');
-    const handler = (e: MediaQueryListEvent) => {
-      setTheme(e.matches ? 'light' : 'dark');
-      mediaQuery.removeEventListener('change', handler);
-    }
-    mediaQuery.addEventListener('change', handler);
+    const handler = (e: MediaQueryListEvent) => setTheme(e.matches ? 'light' : 'dark')
     setTheme(mediaQuery.matches ? 'light' : 'dark');
+    if(typeof mediaQuery.addEventListener === "function") {
+      mediaQuery.addEventListener('change', handler);
+      return () => mediaQuery.removeEventListener('change', handler);
+    }
   }, []);
   // if toggle is clicked, change the theme across JS, CSS, and local storage
   useEffect(() => {

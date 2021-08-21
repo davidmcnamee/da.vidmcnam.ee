@@ -96,7 +96,7 @@ const GhostContainer = styled.div`
   width: 100vw;
   background-color: var(--background);
   box-shadow: 0px -4px 35px -6px rgb(0 0 0 / 28%);
-  transition: all 0.3s ease-in-out;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   opacity: 0;
   transform: scaleY(2);
   &[is-scrolled="true"] {
@@ -110,7 +110,7 @@ const LinkContainer = styled.div<LinkContainerProps>`
   position: fixed;
   top: ${HEADER_HEIGHT_MOBILE};
   left: 100vw;
-  transition: all 0.3s ease;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   transform: translateX(${p => p.isVisible ? "-100%" : 0});
   display: flex;
   flex-direction: column;
