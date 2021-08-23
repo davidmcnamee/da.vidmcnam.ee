@@ -31,7 +31,6 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
   const [theme, setTheme] = useColorTheme();
   useEffect(() => {
     document.documentElement.setAttribute("replace-scrollbar", (navigator.platform.includes('Win') || navigator.platform.includes('Linux')).toString());
-    // analytics
     const referrer = document?.referrer ?? null;
     let naturalThemePreference: boolean | string = window?.matchMedia?.('(prefers-color-scheme: light)')?.matches ?? null;
     if(naturalThemePreference === true) naturalThemePreference = 'light';

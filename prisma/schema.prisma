@@ -1,0 +1,20 @@
+
+datasource db {
+  url      = env("DATABASE_URL")
+  provider = "mysql"
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model VisitLog {
+  id                     Int      @id @default(autoincrement())
+  createdAt              DateTime @default(now())
+  ip                     String?
+  userAgent              String?
+  referrer               String?
+  themePreference        String?
+  naturalThemePreference String?
+  headers                Json?
+}

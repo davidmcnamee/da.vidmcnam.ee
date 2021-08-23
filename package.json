@@ -1,15 +1,19 @@
 {
   "private": true,
   "scripts": {
-    "dev": "next",
-    "build": "next build",
-    "start": "next start"
+    "dev": "rm -rf .next && yarn generate:dev && next",
+    "build": "prisma generate && next build",
+    "start": "next start",
+    "migrate:dev": "dotenv -e .env.development.local prisma migrate dev",
+    "migrate:prod": "dotenv -e .env.production.local prisma migrate deploy",
+    "generate:dev": "dotenv -e .env.development.local prisma generate"
   },
   "dependencies": {
     "@iconify/icons-bi": "^1.1.6",
     "@iconify/icons-feather": "^1.1.0",
     "@iconify/icons-logos": "^1.1.10",
     "@iconify/react": "^3.0.1",
+    "@prisma/client": "2.29.1",
     "@react-spring/parallax": "^9.2.4",
     "beautiful-react-hooks": "^0.35.0",
     "framer-motion": "^4.1.17",
@@ -22,7 +26,8 @@
     "react-dark-mode-toggle": "^0.2.0",
     "react-dom": "^17.0.2",
     "react-spring": "^9.2.4",
-    "react-toggle-dark-mode": "^1.0.4"
+    "react-toggle-dark-mode": "^1.0.4",
+    "serverless-mysql": "^1.5.4"
   },
   "devDependencies": {
     "@babel/core": "^7.13.10",
@@ -32,6 +37,8 @@
     "@types/lodash": "^4.14.172",
     "@types/react": "^17.0.18",
     "@types/react-dom": "^17.0.9",
+    "dotenv-cli": "^4.0.0",
+    "prisma": "2.29.1",
     "typescript": "^4.3.5"
   }
 }
