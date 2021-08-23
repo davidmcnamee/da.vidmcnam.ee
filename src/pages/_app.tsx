@@ -40,7 +40,13 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
       method: 'POST',
       cache: 'no-cache',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ referrer, themePreference, naturalThemePreference })
+      body: JSON.stringify({
+        referrer,
+        themePreference,
+        naturalThemePreference,
+        windowHeight: window.innerHeight,
+        windowWidth: window.innerWidth,
+      })
     });
   }, []);
   return (

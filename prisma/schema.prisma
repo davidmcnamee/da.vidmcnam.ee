@@ -17,4 +17,6 @@ model VisitLog {
   themePreference        String?
   naturalThemePreference String?
   headers                Json?
+  windowHeight           Int?
+  windowWidth            Int?
 }
