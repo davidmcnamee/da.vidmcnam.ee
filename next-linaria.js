@@ -46,7 +46,7 @@ module.exports = (nextConfig = {}) => {
               sourceMap: process.env.NODE_ENV !== 'production',
               ...(nextConfig.linaria || {}),
               extension: LINARIA_EXTENSION,
-              cacheDirectory: '.next/.linaria-cache'
+              cacheDirectory: '.next/cache/.linaria-cache'
             },
           },
         ],
