@@ -35,11 +35,12 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
     let naturalThemePreference: boolean | string = window?.matchMedia?.('(prefers-color-scheme: light)')?.matches ?? null;
     if(naturalThemePreference === true) naturalThemePreference = 'light';
     else if(naturalThemePreference === false) naturalThemePreference = 'dark';
+    const themePreference = window?.localStorage?.getItem?.('color-theme') ?? null;
     fetch('/api/analytics', {
       method: 'POST',
       cache: 'no-cache',
       headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({ referrer, themePreference: theme ?? null, naturalThemePreference })
+      body: JSON.stringify({ referrer, themePreference, naturalThemePreference })
     });
   }, []);
   return (
