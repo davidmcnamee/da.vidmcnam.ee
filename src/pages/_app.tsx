@@ -48,6 +48,22 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
         windowWidth: window.innerWidth,
       })
     });
+    const onClick = (e: MouseEvent) => {
+      let cur = e.target as HTMLElement;
+      let path =  ""
+      while(cur && cur.tagName !== 'body') {
+        path = `${cur.tagName}.${cur.className} > ` + path;
+        cur = cur.parentElement!;
+      }
+      fetch('/api/analytics-click', {
+        method: 'POST',
+        cache: 'no-cache',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({ path })
+      });
+    }
+    window.addEventListener('click', onClick);
+    return () => window.removeEventListener('click', onClick);
   }, []);
   return (
     <>
