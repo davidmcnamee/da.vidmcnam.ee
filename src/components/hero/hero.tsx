@@ -24,12 +24,13 @@ export const Hero = () => {
       <BioContainer>
         <Headshot src="/linkedin-headshot.jpeg" className="scroll-watch" />
         <Blurb className="scroll-watch">
-          I am a computer science and business major, with a passion for all
-          sorts of tech. My (current) interests are distributed systems, user
+          I am a software engineer with a passion for all
+          kinds of tech. My (current) interests are in distributed systems, user
           interfaces, and programming languages. Previously at{" "}
           <b><a href="https://wish.com">Wish</a></b>,{" "}
           <b><a href="https://lazertechnologies.com">Lazer</a></b>, and{" "}
-          <b><a href="https://snapcommerce.com">SnapCommerce</a></b>.
+          <b><a href="https://snapcommerce.com">SnapCommerce</a></b>.{" "}
+          I'll be interning at <b><a href="https://facebook.com">Facebook</a></b> this winter! 😊
         </Blurb>
       </BioContainer>
     </>
