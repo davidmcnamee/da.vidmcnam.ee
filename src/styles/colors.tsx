@@ -1,6 +1,5 @@
-import { css } from "linaria";
 import { lighten, darken } from 'polished';
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 type createShadesKwargs = {
   increments?: number;
@@ -33,7 +32,6 @@ export const lightTheme: {[k:string]: string} = {
   '--project-gradient-2': 'linear-gradient(to bottom right, #D38312, #A83279)',
   '--project-gradient-3': 'linear-gradient(to bottom right, #00c6ff, #0072ff)',
   '--project-gradient-4': 'linear-gradient(to bottom right, #780206, #061161)',
-
 }
 
 export const darkTheme: {[k:string]: string} = {

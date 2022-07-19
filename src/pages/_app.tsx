@@ -1,10 +1,8 @@
 import { globals } from '../styles/global';
 import { AppProps } from 'next/app';
-import { darkTheme, lightTheme, useColorTheme } from '../styles/colors';
-import { Nav } from '../components/nav/nav';
-import { useEffect, useRef } from "react";
+import { lightTheme, useColorTheme } from '../styles/colors';
+import { useEffect } from "react";
 import Script from 'next/script';
-import { IParallax } from '@react-spring/parallax';
 
 const consoleMsg = `
 %cHey there 👋
@@ -30,7 +28,6 @@ globals; // needs to be imported on every page
 const App: React.FC<AppProps> = ({Component, pageProps}) => {
   const [theme, setTheme] = useColorTheme();
   useEffect(() => {
-    document.documentElement.setAttribute("replace-scrollbar", (navigator.platform.includes('Win') || navigator.platform.includes('Linux')).toString());
     const referrer = document?.referrer ?? null;
     let naturalThemePreference: boolean | string = window?.matchMedia?.('(prefers-color-scheme: light)')?.matches ?? null;
     if(naturalThemePreference === true) naturalThemePreference = 'light';
@@ -47,7 +44,7 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
         windowHeight: window.innerHeight,
         windowWidth: window.innerWidth,
       })
-    });
+    }).catch(console.error);
     const onClick = (e: MouseEvent) => {
       let cur = e.target as HTMLElement;
       let path =  ""
@@ -60,7 +57,7 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
         cache: 'no-cache',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify({ path })
-      });
+      }).catch(console.error);
     }
     window.addEventListener('click', onClick);
     return () => window.removeEventListener('click', onClick);
@@ -78,7 +75,6 @@ const App: React.FC<AppProps> = ({Component, pageProps}) => {
           console.log(\`${consoleMsg}\`, "${consoleVars.join("\",\"")}");
         `}
       </Script>
-      <Nav theme={theme} setTheme={setTheme} />
       <Component {...pageProps} theme={theme}  />
     </>
   );

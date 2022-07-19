@@ -38,16 +38,17 @@ export const globals = css`
     h2 { font-size: 3rem; }
     h3 { font-size: 1.6rem; }
     a {
-      color: var(--link);
+      color: inherit;
       text-decoration: none;
+      border: 0.5px solid aqua;
+      font-style: italic;
     }
 
     body {
       padding: 0;
       margin: 0;
-      background-color: var(--background);
-      transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-      color: var(--text-color);
+      background-color: black;
+      color: white;
     }
 
     *,
@@ -56,35 +57,29 @@ export const globals = css`
       box-sizing: inherit;
     }
 
-    :root[replace-scrollbar="null"] {
-      ::-webkit-scrollbar {
-        width: 8px;
-        background-color: rgba(0, 0, 0, 0);
-      }
-      ::-webkit-scrollbar-thumb {
-        background: rgba(0, 0, 0, 0);
-      }
+    .clearfix::after {
+      content: "";
+      clear: both;
+      display: table;
     }
 
-    /* -- SCROLLBAR -- */
-    /* src: https://gist.github.com/devinrhode2/2573411 */
-    :root[replace-scrollbar="true"] {
-      ::-webkit-scrollbar {
-        width: 8px;
-        background-color: rgba(0, 0, 0, 0);
-        -webkit-border-radius: 100px;
-      }
-      ::-webkit-scrollbar:hover {
-        background-color: rgba(0, 0, 0, 0.09);
-      }
-      ::-webkit-scrollbar-thumb:vertical {
-        background: rgba(0, 0, 0, 0.5);
-        -webkit-border-radius: 100px;
-      }
-      ::-webkit-scrollbar-thumb:vertical:active {
-        background: rgba(0, 0, 0, 0.61);
-        -webkit-border-radius: 100px;
-      }
+    .text-gradient-mint-blue-dark {
+      background: -webkit-linear-gradient(-70deg, #a2facf 0%, #64acff 100%);
+        background-clip: border-box;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-box-decoration-break: clone;
+      font-weight: 800;
+    }
+    .text-gradient-pink-blue {
+      background: -webkit-linear-gradient(-70deg, #db469f 0%, #2188ff 100%);
+        background-clip: border-box;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-box-decoration-break: clone;
+      font-weight: 800;
     }
   }
 `;
