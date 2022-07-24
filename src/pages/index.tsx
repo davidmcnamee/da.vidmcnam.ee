@@ -153,8 +153,8 @@ const Index = () => {
             Feel free to reach out to me on{" "}
             <a href="https://www.linkedin.com/in/david-mcnamee/">LinkedIn</a>,{" "}
             <a href="https://github.com/davidmcnamee">Github</a>, or{" "}
-            <a href="https://discord.com/channels/@me/998853679253819394">
-              Discord
+            <a href="https://discord.com">
+              Discord [davidmcnamee#3535]
             </a>{" "}
             :)
           </p>
