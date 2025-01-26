@@ -4,14 +4,7 @@ import { lightTheme, useColorTheme } from '../styles/colors';
 import { useEffect } from "react";
 import Script from 'next/script';
 
-const consoleMsg = `
-%cHey there 👋
-
-Good to have you on my website! You're here for source code, I presume? The code here is minified, but here's a link to the original: https://github.com/davidmcnamee/portfolio-site-v3.
-This site is built with %cNext.js%c (a React framework) and styled with %clinaria%c (a zero-runtime CSS-in-JS tool). I also make use of %cFeather icons%c, and %creact-spring%c (the animation library that manages the parallax scrolling effect).
-
-Hope that satisfies your appetite. Happy coding!
-`.trim();
+const consoleMsg = ''.trim();
 const consoleVars = [
   "color: green",
   `background: ${lightTheme['--gradient-1']}`,
