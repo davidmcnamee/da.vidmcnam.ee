@@ -41,13 +41,13 @@ class MyDocument extends Document {
           <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;800&display=swap" rel="stylesheet"/>
           <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet"/>
           <meta charSet="UTF-8"/>
-          <meta name="description" content="David McNamee's Portfolio"/>
-          <meta name="keywords" content="Software Engineer, Python, C++, Rust, Go, Java, JavaScript, Typescript, Intern"/>
-          <meta name="author" content="David McNamee"/>
-          <meta property="og:image" content="/site-preview.png" />
-          <meta property="og:description" content="David McNamee's portfolio site" />
-          <meta property="og:url" content="https://da.vidmcnam.ee" />
-          <meta property="og:title" content="David McNamee" />
+          <meta name="description" content="Under construction"/>
+          {/* <meta name="keywords" content="Software Engineer, Python, C++, Rust, Go, Java, JavaScript, Typescript, Intern"/> */}
+          {/* <meta name="author" content="David McNamee"/> */}
+          {/* <meta property="og:image" content="/site-preview.png" /> */}
+          {/* <meta property="og:description" content="David McNamee's portfolio site" /> */}
+          {/* <meta property="og:url" content="https://da.vidmcnam.ee" /> */}
+          {/* <meta property="og:title" content="David McNamee" /> */}
         </Head>
         <body>
           <Main />
