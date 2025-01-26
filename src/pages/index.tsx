@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, React } from "react";
 import { animated, useSpring } from "react-spring";
 import { Background } from "../components/background";
 
@@ -68,53 +68,14 @@ const Index = () => {
         }}
       >
         <p>
-          You've reached...
+          site under construction
         </p>
         <animated.h1
           className="text-gradient-pink-blue"
           style={{ lineHeight: "1.1", marginBottom: "0.4em", ...titleProps }}
         >
-          David McNamee
+          check back soon!
         </animated.h1>
-        <div style={{ display: "grid", fontSize: "1.2em" }}>
-          <animated.p style={introProps}>
-            Hi! I'm a software developer in New York, helping to build modern finance at <a href="https://ramp.com">Ramp</a>!
-          </animated.p>
-          <animated.div style={{ display: "grid", ...remainingProps }}>
-          <p style={{ marginBottom: 0 }}>Here's some of the things I've built in the past:</p>
-          <div style={{ fontSize: "0.7em", margin: "1em 0" }}>
-            <div className="clearfix" style={{ margin: "1em 0" }}>
-              <CompanyLogo image="logos/robinhood.png" href="https://robinhood.com"/>{" "}
-              An instant debit card payment rail for <a href="https://robinhood.com">Robinhood</a> -- fund your account faster than you can say "buy the dip"!
-            </div>
-            <div className="clearfix" style={{ margin: "1em 0" }}>
-              <CompanyLogo href="https://meta.com" image="logos/meta.jpg" />{" "}
-              A C++ security framework for encrypting memory at runtime on ultra-sensitive <a href="https://meta.com">Meta</a> services
-            </div>
-            <div className="clearfix" style={{ margin: "1em 0" }}>
-            <CompanyLogo href="https://wish.com" image="logos/wish.jpg" />{" "}
-              A faster, more intuitive Product API for <a href="https://wish.com">Wish</a> merchants!
-            </div>
-            <div className="clearfix" style={{ margin: "1em 0" }}>
-            <CompanyLogo href="https://lazertechnologies.com" image="logos/lazer.png" />{" "}
-              A pilot version of the AirMiles Shopify App at <a href="https://lazertechnologies.com">Lazer Technologies</a>, and the first iteration of RBC's <a href="https://www.gocanadaunited.ca/">Canada United</a> website!
-            </div>
-            <div className="clearfix" style={{ margin: "1em 0" }}>
-            <CompanyLogo href="https://snapcommerce.com" image="logos/snapcommerce.png" backgroundColor="#FDFEFE" />{" "}
-              A microservice for direct-to-supplier hotel bookings at <a href="https://snapcommerce.com">SnapTravel</a>
-            </div>
-          </div>
-          <p>
-            I'm not currently looking for a job... this website is really an excuse to play around with fun particle effects{" "}
-          </p>
-          
-          <p>
-            Feel free to reach out to me on{" "}
-            <a href="https://www.linkedin.com/in/david-mcnamee/">LinkedIn</a>{" "}
-            :)
-          </p>
-          </animated.div>
-        </div>
       </div>
     </>
   );
