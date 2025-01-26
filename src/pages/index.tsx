@@ -1,4 +1,4 @@
-import { FC, React } from "react";
+import { FC } from "react";
 import { animated, useSpring } from "react-spring";
 import { Background } from "../components/background";
 
